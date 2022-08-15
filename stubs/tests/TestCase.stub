@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }}\tests;
+
+use Ifui\WebmanModule\Testing\TestCase as BaseTestCase;
+
+class TestCase extends BaseTestCase
+{
+    use CreateApplication;
+}

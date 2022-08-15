@@ -1,0 +1,15 @@
+{
+    "name": "{{ name }}",
+    "activity": true,
+    "author": "{{ author }}",
+    "email": "{{ email }}",
+    "homepage": "{{ homepage }}",
+    "type": "",
+    "version": "0.1.0",
+    "description": "{{ description }}",
+    "keywords": [],
+    "route": {
+        "autoRoute": true,
+        "urlPrefix": "/{{ name }}"
+    }
+}

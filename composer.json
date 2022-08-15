@@ -1,0 +1,16 @@
+{
+  "name": "ifui/webman-module",
+  "type": "library",
+  "license": "MIT",
+  "description": "Webman plugin ifui/webman-module",
+  "autoload": {
+    "psr-4": {
+      "Ifui\\WebmanModule\\": "src"
+    }
+  },
+  "require-dev": {
+    "illuminate/filesystem": "^9.24",
+    "phpunit/phpunit": "^9.5",
+    "robmorgan/phinx": "^0.12.12"
+  }
+}

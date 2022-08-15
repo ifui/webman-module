@@ -1,0 +1,17 @@
+<?php
+
+namespace {{ namespace }}\tests;
+
+trait CreateApplication
+{
+
+    /**
+     * Create the webman application.
+     *
+     * @return void
+     */
+    public function createApplication()
+    {
+        require __DIR__ . '/../../../support/bootstrap.php';
+    }
+}

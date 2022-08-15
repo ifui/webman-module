@@ -1,0 +1,17 @@
+{
+    "name": "{{ author }}/{{ name }}",
+    "description": "{{ description }}",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "{{ author }}",
+            "email": "{{ email }}",
+            "homepage": "{{ homepage }}"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "{{ namespaceComposer }}": ""
+        }
+    }
+}

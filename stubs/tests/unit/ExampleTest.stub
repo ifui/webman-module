@@ -1,0 +1,26 @@
+<?php
+
+namespace {{ namespace }}\tests\unit;
+
+use {{ namespace }}\tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testIndex()
+    {
+        $default_timezone = config('app.default_timezone');
+        $this->assertIsString($default_timezone);
+
+        $rsp = $this->get('/{{ name }}/index/index');
+        $this->assertSame(200, $rsp->getStatusCode());
+        $this->assertSame('hello webman module', $rsp->rawBody());
+
+        $rsp = $this->getJson('/{{ name }}/index/json');
+        $this->assertArrayHasKey('code', $rsp->rawBody());
+    }
+}
