@@ -1,0 +1,4 @@
+<?php
+
+// @see: https://www.workerman.net/doc/webman/multiapp.html#多应用中间件配置
+return [];
