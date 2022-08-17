@@ -7,7 +7,6 @@ use Illuminate\Filesystem\Filesystem;
 use Webman\Bootstrap;
 use Webman\Config;
 use Workerman\Worker;
-use const PHP_EOL;
 
 class Module implements Bootstrap
 {
@@ -98,9 +97,9 @@ class Module implements Bootstrap
             $moduleName = $activity['name'];
             $className = "{$namespace}\\$moduleName\app\providers\AppServerProvider";
             if (class_exists($className)) {
-                if (!is_null($this->worker) && $this->worker->count == 1) {
-                    Worker::safeEcho("<n><g>[INFO]</g> 应用模块 ${moduleName} 已启动.</n>" . PHP_EOL);
-                }
+//                if (!is_null($this->worker) && $this->worker->count == 1) {
+//                    Worker::safeEcho("<n><g>[INFO]</g> 应用模块 ${moduleName} 已启动.</n>" . PHP_EOL);
+//                }
                 with(new $className($this->worker))->boot();
             }
         }

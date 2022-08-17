@@ -1,0 +1,27 @@
+<?php
+
+namespace {{ namespace }};
+
+use think\Model;
+
+/**
+$properties
+ */
+class {{ className }} extends Model
+{
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = '{{ table }}';
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $pk = '{{ pk }}';
+
+
+}
