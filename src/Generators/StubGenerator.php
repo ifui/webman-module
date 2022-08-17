@@ -15,7 +15,7 @@ class StubGenerator extends Generator
     protected array $replaces;
 
     /**
-     * Generator the laravel-plugin.json file.
+     * Generator the stub file.
      *
      * @return void
      * @throws FileNotFoundException
@@ -28,14 +28,7 @@ class StubGenerator extends Generator
             $configTo = $this->path . $config['to'];
             $filepath = $this->replaceStub($configTo);
 
-            $stubPath = __DIR__ . '/../../stubs/' . $config['from'];
-
-            if (!$this->filesystem->isDirectory($dir = dirname($filepath))) {
-                $this->filesystem->makeDirectory($dir, 0775, true);
-            }
-
-            $this->filesystem->put($filepath, $this->getStubContent($stubPath));
-            $this->command->info("Created {$filepath}");
+            $this->generatorStub($config['from'], $filepath);
         }
     }
 
@@ -53,6 +46,37 @@ class StubGenerator extends Generator
         }
 
         return $stub;
+    }
+
+    /**
+     * Create a single stub file.
+     *
+     * @param $fromPath
+     * @param $toPath
+     * @return void
+     * @throws FileNotFoundException
+     */
+    public function generatorStub($fromPath, $toPath)
+    {
+        $stubPath = $this->getStubPath($fromPath);
+
+        if (!$this->filesystem->isDirectory($dir = dirname($toPath))) {
+            $this->filesystem->makeDirectory($dir, 0775, true);
+        }
+
+        $this->filesystem->put($toPath, $this->getStubContent($stubPath));
+        $this->command->info("Created {$toPath}");
+    }
+
+    /**
+     * Return stub file path.
+     *
+     * @param $path
+     * @return string
+     */
+    public function getStubPath($path)
+    {
+        return Config::get('plugin.ifui.webman-module.app.paths.stub_path') . DIRECTORY_SEPARATOR . $path;
     }
 
     /**

@@ -49,4 +49,16 @@ class Command extends \Symfony\Component\Console\Command\Command
 
         return parent::run($this->input, $this->output);
     }
+
+    /**
+     * Overwrite execute method.
+     *
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int|void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        return self::SUCCESS;
+    }
 }

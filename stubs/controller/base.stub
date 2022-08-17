@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+
+use support\Request;
+
+class {{ className }}
+{
+    public function index(Request $request)
+    {
+        return response('hello webman module');
+    }
+}
