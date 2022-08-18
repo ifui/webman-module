@@ -173,11 +173,11 @@ php webman module:make-test unit/AppleTest --module=apple
 
 主要使用了数据库迁移工具 `Phinx`，
 
-项目地址：[https://github.com/cakephp/phinx](https://github.com/cakephp/phinx)
+`Phinx` 项目地址：[https://github.com/cakephp/phinx](https://github.com/cakephp/phinx)
 
 官方中文文档地址：[https://tsy12321.gitbooks.io/phinx-doc/content/](https://tsy12321.gitbooks.io/phinx-doc/content/)
 
-默认的 `phink` 配置在 `webman` 根目录下的  `config/plugin/ifui/webman-module/phink.php`s
+默认的 `phink` 配置在 `webman` 根目录下的  `config/plugin/ifui/webman-module/phink.php`
 
 #### 1. 创建一个迁移脚本 module:phink-create
 
