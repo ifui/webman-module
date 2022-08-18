@@ -12,7 +12,7 @@
 
 ## 快速上手
 
-安装命令：`composer require ifui/webman-module --dev`
+安装命令：`composer require webman/console && composer require ifui/webman-module --dev`
 
 ### 1.创建插件
 
@@ -179,7 +179,32 @@ php webman module:make-test unit/AppleTest --module=apple
 
 官方中文文档地址：[https://tsy12321.gitbooks.io/phinx-doc/content/](https://tsy12321.gitbooks.io/phinx-doc/content/)
 
-默认的 `phink` 配置在 `webman` 根目录下的  `config/plugin/ifui/webman-module/phink.php`
+使用数据库迁移命令前，请确保`webman` 根目录下的  `config/plugin/ifui/webman-module/phink.php` 配置是否正确
+
+```php
+<?php
+
+return [
+    "paths" => [
+        "migrations" => "database/migrations",
+        "seeds" => "database/seeds"
+    ],
+    "environments" => [
+        "default_migration_table" => "phinxlog",
+        "default_database" => "dev",
+        "default_environment" => "dev",
+        "dev" => [
+            "adapter" => "DB_CONNECTION", // 修改此处 e.g. env('DB_CONNECTION')
+            "host" => "DB_HOST", // 修改此处
+            "name" => "DB_DATABASE", // 修改此处
+            "user" => "DB_USERNAME", // 修改此处
+            "pass" => "DB_PASSWORD", // 修改此处
+            "port" => "DB_PORT", // 修改此处
+            "charset" => "utf8"
+        ]
+    ]
+];
+```
 
 #### 1. 创建一个迁移脚本 module:phink-create
 
