@@ -10,6 +10,6 @@
     "keywords": [],
     "route": {
         "autoRoute": true,
-        "urlPrefix": "/{{ name }}"
+        "urlPrefix": "/app/{{ name }}"
     }
 }
