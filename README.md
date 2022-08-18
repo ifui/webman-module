@@ -10,9 +10,13 @@
 
 相比于普通插件的一大好处是内置支持了 `测试` 功能，可以方便快捷的测试应用程序在实际应用场景下的情况。
 
-## 快速上手
+## 安装
 
-安装命令：`composer require webman/console && composer require ifui/webman-module --dev`
+```shell
+composer require ifui/webman-module --dev -W
+```
+
+## 快速上手
 
 ### 1.创建插件
 
