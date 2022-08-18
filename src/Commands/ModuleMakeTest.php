@@ -2,7 +2,6 @@
 
 namespace Ifui\WebmanModule\Commands;
 
-
 use Ifui\WebmanModule\Concerns\Command\InteractsWithModule;
 use Ifui\WebmanModule\Generators\StubGenerator;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
@@ -13,15 +12,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Webman\Config;
 use Webman\Exception\FileException;
 
-class ModuleMakeController extends Command
+class ModuleMakeTest extends Command
 {
     use InteractsWithModule {
         execute as traitExecute;
         configure as traitConfigure;
     }
 
-    protected static $defaultName = 'module:make-controller';
-    protected static $defaultDescription = '生成一个控制器文件';
+    protected static $defaultName = 'module:make-test';
+    protected static $defaultDescription = '生成一个测试文件';
 
     /**
      * Overwrite configure method.
@@ -54,11 +53,14 @@ class ModuleMakeController extends Command
             throw new FileException($filepath . ' 文件已存在');
         }
 
+        $classNamespace = Config::get('plugin.ifui.webman-module.app.namespace') . '\\' . $this->input->getOption('module');
+        $classNamespace = str_replace('/', '\\', $classNamespace);
         $namespace = $this->getNamespace();
         $className = $this->getClassName();
 
         $replaces = [
             'moduleName' => $moduleName,
+            'classNamespace' => $classNamespace,
             'namespace' => $namespace,
             'className' => $className
         ];
@@ -68,7 +70,7 @@ class ModuleMakeController extends Command
         // Generator stubs
         with(new StubGenerator($moduleName, $filesystem, $this))
             ->setReplaces($replaces)
-            ->generatorStub('controller/base.stub', $filepath);
+            ->generatorStub('tests/base.stub', $filepath);
 
         return self::SUCCESS;
     }
@@ -80,7 +82,7 @@ class ModuleMakeController extends Command
      */
     protected function getGeneratorPath()
     {
-        return Config::get('plugin.ifui.webman-module.app.paths.generator.controller');
+        return Config::get('plugin.ifui.webman-module.app.paths.generator.tests');
     }
 
     /**

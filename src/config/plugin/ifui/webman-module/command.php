@@ -5,6 +5,7 @@ use Ifui\WebmanModule\Commands\ModuleListCommand;
 use Ifui\WebmanModule\Commands\ModuleMakeController;
 use Ifui\WebmanModule\Commands\ModuleMakeMiddleware;
 use Ifui\WebmanModule\Commands\ModuleMakeModel;
+use Ifui\WebmanModule\Commands\ModuleMakeTest;
 use Ifui\WebmanModule\Commands\ModulePhinkCreate;
 use Ifui\WebmanModule\Commands\ModulePhinkMigrate;
 use Ifui\WebmanModule\Commands\ModulePhinkRollback;
@@ -24,4 +25,5 @@ return [
     ModuleMakeController::class,
     ModuleMakeModel::class,
     ModuleMakeMiddleware::class,
+    ModuleMakeTest::class,
 ];

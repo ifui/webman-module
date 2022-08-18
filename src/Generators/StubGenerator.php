@@ -20,7 +20,7 @@ class StubGenerator extends Generator
      * @return void
      * @throws FileNotFoundException
      */
-    public function generator(): void
+    public function generator()
     {
         $stubPaths = Config::get('plugin.ifui.webman-module.app.paths.stub', []);
 
@@ -38,7 +38,7 @@ class StubGenerator extends Generator
      * @param string $stub
      * @return array|string
      */
-    public function replaceStub(string &$stub): array|string
+    public function replaceStub(string &$stub)
     {
         foreach ($this->replaces as $key => $value) {
             $stub = str_replace("{{ $key }}", $value ?? '', $stub);
@@ -86,7 +86,7 @@ class StubGenerator extends Generator
      * @return array|string
      * @throws FileNotFoundException
      */
-    public function getStubContent(string $stubPath): array|string
+    public function getStubContent(string $stubPath)
     {
         $stub = $this->filesystem->get($stubPath);
 
@@ -99,7 +99,7 @@ class StubGenerator extends Generator
      * @param $replaces
      * @return StubGenerator
      */
-    public function setReplaces($replaces): static
+    public function setReplaces($replaces)
     {
         $this->replaces = $replaces;
 

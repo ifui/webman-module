@@ -22,7 +22,7 @@ class ModuleMakeModel extends Command
     }
 
     protected static $defaultName = 'module:make-model';
-    protected static $defaultDescription = '生成一个 model 文件';
+    protected static $defaultDescription = '生成一个模型文件';
     protected $pk = 'id';
 
     /**
@@ -33,7 +33,7 @@ class ModuleMakeModel extends Command
     protected function configure()
     {
         $this->traitConfigure();
-        $this->addArgument('filename', InputArgument::REQUIRED, 'model 名称');
+        $this->addArgument('filename', InputArgument::REQUIRED, '文件名');
     }
 
     /**

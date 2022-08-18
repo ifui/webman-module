@@ -20,7 +20,7 @@ class ModuleMakeMiddleware extends Command
     }
 
     protected static $defaultName = 'module:make-middleware';
-    protected static $defaultDescription = '生成一个 middleware 文件';
+    protected static $defaultDescription = '生成一个中间件文件';
 
     /**
      * Overwrite configure method.
@@ -30,7 +30,7 @@ class ModuleMakeMiddleware extends Command
     protected function configure()
     {
         $this->traitConfigure();
-        $this->addArgument('filename', InputArgument::REQUIRED, 'middleware 名称');
+        $this->addArgument('filename', InputArgument::REQUIRED, '文件名');
     }
 
     /**

@@ -148,6 +148,63 @@ trait MakeHttpRequest
     }
 
     /**
+     * Visit the given URI with a POST request.
+     *
+     * @param string $uri
+     * @param array $parameters
+     * @param array $headers
+     * @return Response
+     */
+    public function post($uri, $parameters = [], $headers = [])
+    {
+        $this->withHeaders($headers);
+        return $this->call('POST', $uri, $parameters);
+    }
+
+    /**
+     * Visit the given URI with a PATCH request.
+     *
+     * @param string $uri
+     * @param array $parameters
+     * @param array $headers
+     * @return Response
+     */
+    public function patch($uri, $parameters = [], $headers = [])
+    {
+        $this->withHeaders($headers);
+        return $this->call('PATCH', $uri, $parameters);
+    }
+
+    /**
+     * Visit the given URI with a PUT request.
+     *
+     * @param string $uri
+     * @param array $parameters
+     * @param array $headers
+     * @return Response
+     */
+    public function put($uri, $parameters = [], $headers = [])
+    {
+        $this->withHeaders($headers);
+        return $this->call('PUT', $uri, $parameters);
+    }
+
+    /**
+     * Visit the given URI with a DELETE request.
+     *
+     * @param string $uri
+     * @param array $parameters
+     * @param array $headers
+     * @return Response
+     */
+    public function delete($uri, $parameters = [], $headers = [])
+    {
+        $this->withHeaders($headers);
+        return $this->call('DELETE', $uri, $parameters);
+    }
+
+
+    /**
      * Visit the given URI with a GET request, expecting a JSON response.
      *
      * @param string $uri
@@ -183,5 +240,53 @@ trait MakeHttpRequest
         $json = json_decode($body, true) ?? $body;
         $rsp->withBody($json);
         return $rsp;
+    }
+
+    /**
+     * Visit the given URI with a POST request, expecting a JSON response.
+     *
+     * @param string $uri
+     * @param array $headers
+     * @return Response
+     */
+    public function postJson($uri, $parameters = [], $headers = [])
+    {
+        return $this->json('POST', $uri, $parameters, $headers);
+    }
+
+    /**
+     * Visit the given URI with a PUT request, expecting a JSON response.
+     *
+     * @param string $uri
+     * @param array $headers
+     * @return Response
+     */
+    public function putJson($uri, $parameters = [], $headers = [])
+    {
+        return $this->json('PUT', $uri, $parameters, $headers);
+    }
+
+    /**
+     * Visit the given URI with a PATCH request, expecting a JSON response.
+     *
+     * @param string $uri
+     * @param array $headers
+     * @return Response
+     */
+    public function patchJson($uri, $parameters = [], $headers = [])
+    {
+        return $this->json('PATCH', $uri, $parameters, $headers);
+    }
+
+    /**
+     * Visit the given URI with a DELETE request, expecting a JSON response.
+     *
+     * @param string $uri
+     * @param array $headers
+     * @return Response
+     */
+    public function deleteJson($uri, $parameters = [], $headers = [])
+    {
+        return $this->json('DELETE', $uri, $parameters, $headers);
     }
 }

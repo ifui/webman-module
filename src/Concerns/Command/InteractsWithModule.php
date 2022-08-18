@@ -20,7 +20,7 @@ trait InteractsWithModule
     protected function configure()
     {
         parent::configure();
-        $this->addOption('--module', '-m', InputArgument::OPTIONAL, '模块名');
+        $this->addOption('--module', '-M', InputArgument::OPTIONAL, '模块名');
     }
 
     /**
