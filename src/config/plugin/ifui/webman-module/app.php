@@ -72,7 +72,7 @@ return [
          |
          */
         'stub' => [
-            'module.json' => ['from' => 'module.stub', 'to' => '/module.json'],
+            'moduleJson' => ['from' => 'module.stub', 'to' => '/module.json'],
             'config-app' => ['from' => 'config/app.stub', 'to' => '/config/app.php'],
             'config-container' => ['from' => 'config/container.stub', 'to' => '/config/container.php'],
             'controller' => ['from' => 'controller/Index.stub', 'to' => '/app/controller/Index.php'],
@@ -85,7 +85,7 @@ return [
             'LICENSE' => ['from' => 'LICENSE.stub', 'to' => '/LICENSE.md'],
             'README' => ['from' => 'README.stub', 'to' => '/README.md'],
             'gitignore' => ['from' => 'gitignore.stub', 'to' => '/.gitignore.md'],
-            'composer.json' => ['from' => 'composer.stub', 'to' => '/composer.json'],
+            'composerJson' => ['from' => 'composer.stub', 'to' => '/composer.json'],
             // tests
             'tests-TestCase' => ['from' => 'tests/TestCase.stub', 'to' => '/tests/TestCase.php'],
             'tests-CreateApplication' => ['from' => 'tests/CreateApplication.stub', 'to' => '/tests/CreateApplication.php'],

@@ -12,6 +12,8 @@ use Ifui\WebmanModule\Commands\ModulePhinkRollback;
 use Ifui\WebmanModule\Commands\ModulePhinkSeedCreate;
 use Ifui\WebmanModule\Commands\ModulePhinkSeedRun;
 use Ifui\WebmanModule\Commands\ModulePhinkStatus;
+use Ifui\WebmanModule\Commands\ModuleStart;
+use Ifui\WebmanModule\Commands\ModuleStop;
 
 return [
     ModuleListCommand::class,
@@ -26,4 +28,6 @@ return [
     ModuleMakeModel::class,
     ModuleMakeMiddleware::class,
     ModuleMakeTest::class,
+    ModuleStart::class,
+    ModuleStop::class,
 ];

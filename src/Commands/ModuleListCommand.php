@@ -11,7 +11,7 @@ class ModuleListCommand extends Command
     protected static $defaultName = 'module:list';
     protected static $defaultDescription = '显示应用状态列表';
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $headers = [
             'name',
