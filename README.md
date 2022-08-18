@@ -12,6 +12,8 @@
 
 ## 快速上手
 
+安装命令：`composer require ifui/webman-module --dev`
+
 ### 1.创建插件
 
 执行：`php webman module:create`
