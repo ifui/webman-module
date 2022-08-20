@@ -2,7 +2,7 @@
   "name": "ifui/webman-module",
   "type": "library",
   "license": "MIT",
-  "version": "1.0.2",
+  "version": "dev-1.x",
   "description": "Webman plugin ifui/webman-module",
   "autoload": {
     "psr-4": {
