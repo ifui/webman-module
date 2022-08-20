@@ -16,11 +16,11 @@ class ExampleTest extends TestCase
         $default_timezone = config('app.default_timezone');
         $this->assertIsString($default_timezone);
 
-        $rsp = $this->get('/{{ name }}/index/index');
+        $rsp = $this->get('/app/{{ name }}/index/index');
         $this->assertSame(200, $rsp->getStatusCode());
         $this->assertSame('hello webman module', $rsp->rawBody());
 
-        $rsp = $this->getJson('/{{ name }}/index/json');
+        $rsp = $this->getJson('/app/{{ name }}/index/json');
         $this->assertArrayHasKey('code', $rsp->rawBody());
     }
 }
