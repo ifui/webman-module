@@ -13,10 +13,11 @@
     "workerman/webman": "^1.0"
   },
   "require": {
-    "illuminate/filesystem": "^9.24",
-    "phpunit/phpunit": "^9.5",
+    "php": ">=7.2",
+    "webman/console": "^1.0",
+    "illuminate/filesystem": "^7.30",
+    "phpunit/phpunit": "^8.5",
     "robmorgan/phinx": "^0.12.12",
-    "fzaninotto/faker": "^1.5",
-    "webman/console": "^1.0"
+    "fzaninotto/faker": "^1.9"
   }
 }
