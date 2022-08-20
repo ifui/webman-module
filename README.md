@@ -18,11 +18,11 @@ composer require ifui/webman-module --dev -W
 
 ## 快速上手
 
-### 1.创建插件
+### 1.创建模块
 
 执行：`php webman module:create`
 
-插件名应遵循`PSR4`规范，这里不作过多限制
+模块名应遵循`PSR4`规范，这里不作过多限制
 
 ```
  请输入应用名（必填）:
