@@ -13,7 +13,7 @@
 ## 安装
 
 ```shell
-composer require ifui/webman-module --dev -W
+composer require ifui/webman-module ^1.0.2 --dev
 ```
 
 ## 快速上手
