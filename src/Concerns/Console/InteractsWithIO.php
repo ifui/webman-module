@@ -18,7 +18,7 @@ trait InteractsWithIO
      *
      * @var int
      */
-    protected int $verbosity = OutputInterface::VERBOSITY_NORMAL;
+    protected $verbosity = OutputInterface::VERBOSITY_NORMAL;
 
     /**
      * Confirm a question with the user.
@@ -27,7 +27,7 @@ trait InteractsWithIO
      * @param bool $default
      * @return bool
      */
-    public function confirm(string $question, bool $default = false): bool
+    public function confirm(string $question, bool $default = false)
     {
         return $this->symfony->confirm($question, $default);
     }
@@ -37,9 +37,9 @@ trait InteractsWithIO
      *
      * @param string $question
      * @param string|null $default
-     * @return mixed
+     * @return string
      */
-    public function ask(string $question, string $default = null): mixed
+    public function ask(string $question, string $default = null)
     {
         return $this->symfony->ask($question, $default);
     }
@@ -51,7 +51,7 @@ trait InteractsWithIO
      * @param bool $fallback
      * @return mixed
      */
-    public function secret(string $question, bool $fallback = true): mixed
+    public function secret(string $question, bool $fallback = true)
     {
         $question = new Question($question);
 
@@ -70,7 +70,7 @@ trait InteractsWithIO
      * @param bool $multiple
      * @return string|array
      */
-    public function choice(string $question, array $choices, string $default = null, mixed $attempts = null, bool $multiple = false): array|string
+    public function choice(string $question, array $choices, string $default = null, $attempts = null, bool $multiple = false)
     {
         $question = new ChoiceQuestion($question, $choices, $default);
 
@@ -88,7 +88,7 @@ trait InteractsWithIO
      * @param array $columnStyles
      * @return void
      */
-    public function table(array $headers, array $rows, TableStyle|string $tableStyle = 'default', array $columnStyles = []): void
+    public function table(array $headers, array $rows, $tableStyle = 'default', array $columnStyles = [])
     {
         $table = new Table($this->output);
 
@@ -108,7 +108,7 @@ trait InteractsWithIO
      * @param Closure $callback
      * @return int|iterable|void
      */
-    public function withProgressBar(iterable|int $totalSteps, Closure $callback)
+    public function withProgressBar($totalSteps, Closure $callback)
     {
         $bar = $this->symfony->createProgressBar(
             is_iterable($totalSteps) ? count($totalSteps) : $totalSteps

@@ -12,7 +12,7 @@ class StubGenerator extends Generator
      *
      * @var array
      */
-    protected array $replaces;
+    protected $replaces;
 
     /**
      * Generator the stub file.

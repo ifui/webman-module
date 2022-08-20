@@ -11,7 +11,7 @@ class FolderGenerator extends Generator
      *
      * @return void
      */
-    public function generator(): void
+    public function generator()
     {
         $generators = Config::get('plugin.ifui.webman-module.app.paths.generator', []);
 

@@ -13,28 +13,28 @@ abstract class Generator
      *
      * @var string
      */
-    protected string $name;
+    protected $name;
 
     /**
      * The container path.
      *
      * @var string
      */
-    protected string $path;
+    protected $path;
 
     /**
      * The filesystem instance.
      *
      * @var Filesystem|null
      */
-    protected Filesystem|null $filesystem;
+    protected $filesystem;
 
     /**
      * The Command instance.
      *
      * @var Command|null
      */
-    protected Command|null $command;
+    protected $command;
 
     /**
      * The construct.
@@ -61,7 +61,7 @@ abstract class Generator
      * @param Filesystem $filesystem
      * @return Generator
      */
-    public function setFileSystem(Filesystem $filesystem): static
+    public function setFileSystem(Filesystem $filesystem)
     {
         $this->filesystem = $filesystem;
         return $this;
@@ -73,7 +73,7 @@ abstract class Generator
      * @param Command $command
      * @return Generator
      */
-    public function setCommand(Command $command): static
+    public function setCommand(Command $command)
     {
         $this->command = $command;
         return $this;

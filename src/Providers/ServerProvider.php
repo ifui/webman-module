@@ -13,14 +13,14 @@ abstract class ServerProvider
      *
      * @var ContainerInterface|null
      */
-    protected ?ContainerInterface $container;
+    protected $container;
 
     /**
      * The Worker instance.
      *
      * @var Worker|null
      */
-    protected ?Worker $worker;
+    protected $worker;
 
     /**
      * Create a new service provider instance.
@@ -28,7 +28,7 @@ abstract class ServerProvider
      * @param Worker|null $worker
      * @return void
      */
-    public function __construct(?Worker $worker)
+    public function __construct($worker)
     {
         $this->container = Container::instance();
         $this->worker = $worker;
@@ -39,5 +39,5 @@ abstract class ServerProvider
      *
      * @return void
      */
-    abstract public function boot(): void;
+    abstract public function boot();
 }

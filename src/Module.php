@@ -15,28 +15,28 @@ class Module implements Bootstrap
      *
      * @var Module|null
      */
-    public static ?Module $instance = null;
+    public static $instance = null;
 
     /**
      * All $applications with scan market folder.
      *
      * @var array
      */
-    public array $applications = [];
+    public $applications = [];
 
     /**
      * The Filesystem instance.
      *
      * @var Filesystem
      */
-    public Filesystem $filesystem;
+    public $filesystem;
 
     /**
      * The Worker instance.
      *
      * @var Worker|null
      */
-    public ?Worker $worker;
+    public $worker;
 
     /**
      * Start Container Server.
@@ -112,7 +112,9 @@ class Module implements Bootstrap
      */
     public function getActivity()
     {
-        return array_filter($this->applications, fn($item) => $item['activity']) ?? [];
+        return array_filter($this->applications, function ($item) {
+            return $item ?? [];
+        });
     }
 
     /**

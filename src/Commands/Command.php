@@ -17,21 +17,21 @@ class Command extends \Symfony\Component\Console\Command\Command
      *
      * @var SymfonyStyle
      */
-    public SymfonyStyle $symfony;
+    public $symfony;
 
     /**
      * The input interface implementation.
      *
      * @var InputInterface
      */
-    public InputInterface $input;
+    public $input;
 
     /**
      * The output interface implementation.
      *
      * @var OutputInterface
      */
-    public OutputInterface $output;
+    public $output;
 
     /**
      * Run the console command.
@@ -41,7 +41,7 @@ class Command extends \Symfony\Component\Console\Command\Command
      * @return int
      * @throws Exception
      */
-    public function run(InputInterface $input, OutputInterface $output): int
+    public function run(InputInterface $input, OutputInterface $output)
     {
         $this->input = $input;
         $this->output = $output;
