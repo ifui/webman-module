@@ -84,7 +84,7 @@ return [
             'route-web' => ['from' => 'route/web.stub', 'to' => '/route/web.php'],
             'LICENSE' => ['from' => 'LICENSE.stub', 'to' => '/LICENSE.md'],
             'README' => ['from' => 'README.stub', 'to' => '/README.md'],
-            'gitignore' => ['from' => 'gitignore.stub', 'to' => '/.gitignore.md'],
+            'gitignore' => ['from' => 'gitignore.stub', 'to' => '/.gitignore'],
             'composerJson' => ['from' => 'composer.stub', 'to' => '/composer.json'],
             // tests
             'tests-TestCase' => ['from' => 'tests/TestCase.stub', 'to' => '/tests/TestCase.php'],
