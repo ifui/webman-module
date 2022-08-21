@@ -47,7 +47,7 @@ class ModuleCreateCommand extends Command
 
         // Define the market namespace
         $namespace = Config::get('plugin.ifui.webman-module.app.namespace', 'plugin') . '\\' . $name;
-        $namespaceComposer = Config::get('plugin.ifui.webman-module.app.namespace', 'plugin') . '\\\\' . $name;
+        $namespaceComposer = Config::get('plugin.ifui.webman-module.app.namespace', 'plugin') . '\\\\' . $name . '\\\\';
 
         $replaces = [
             'name' => $name,
