@@ -2,6 +2,7 @@
 
 namespace Ifui\WebmanModule;
 
+use Ifui\WebmanModule\Utils\MergeVendorPlugin;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Webman\Bootstrap;
@@ -93,14 +94,22 @@ class Module implements Bootstrap
     {
         $namespace = Config::get('plugin.ifui.webman-module.app.namespace', 'plugin');
         $activities = $this->getActivity();
+
+        $mergeVendorManager = new MergeVendorPlugin();
+        $mergeVendorManager->init();
+
         foreach ($activities as $activity) {
             $moduleName = $activity['name'];
             $className = "{$namespace}\\$moduleName\app\providers\AppServerProvider";
             if (class_exists($className)) {
-//                if (!is_null($this->worker) && $this->worker->count == 1) {
-//                    Worker::safeEcho("<n><g>[INFO]</g> 应用模块 ${moduleName} 已启动.</n>" . PHP_EOL);
-//                }
+                if ($this->worker->name == 'plugin.ifui.webman-module.monitor') {
+                    Worker::safeEcho("<n><g>[INFO]</g> 应用模块 ${moduleName} 已启动.</n>" . PHP_EOL);
+                }
                 with(new $className($this->worker))->boot();
+            }
+            // Merge plugin vendor
+            if (file_exists(module_path($moduleName, 'composer.json')) && is_dir(module_path($moduleName, 'vendor'))) {
+                $mergeVendorManager->addVendor(module_path($moduleName, 'vendor'));
             }
         }
     }
