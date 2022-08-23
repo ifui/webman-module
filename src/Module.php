@@ -101,6 +101,12 @@ class Module implements Bootstrap
         foreach ($activities as $activity) {
             $moduleName = $activity['name'];
             $className = "{$namespace}\\$moduleName\app\providers\AppServerProvider";
+
+            // require plugin common functions.
+            if (file_exists(module_path($moduleName, 'app/functions.php'))) {
+                require module_path($moduleName, 'app/functions.php');
+            }
+
             if (class_exists($className)) {
                 if ($this->worker->name == 'plugin.ifui.webman-module.monitor') {
                     Worker::safeEcho("<n><g>[INFO]</g> 应用模块 ${moduleName} 已启动.</n>" . PHP_EOL);
