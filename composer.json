@@ -14,7 +14,7 @@
   },
   "require": {
     "php": ">=7.2",
-    "illuminate/filesystem": "^7.30",
+    "illuminate/filesystem": "^7.30.6",
     "phpunit/phpunit": "^8.5",
     "robmorgan/phinx": "^0.12.12"
   }
