@@ -13,7 +13,16 @@
 ## 安装
 
 ```shell
-composer require ifui/webman-module ^1.0.2 --dev
+composer require ifui/webman-module ^1.0.3
+```
+
+## 版本升级 V1.0.3
+
+```shell
+# 安装
+composer require ifui/webman-module ^1.0.3
+# 升级配置文件
+php webman plugin:install ifui/webman-module
 ```
 
 ## 快速上手
@@ -320,6 +329,14 @@ Route::get('/hello', function () {
 应用插件安装时只需要将插件目录拷贝到`{主项目}/plugin`目录下即可，需要`reload`或`restart`才能生效。
 
 卸载时直接删除`{主项目}/plugin`下对应的插件目录即可。
+
+### 如何在插件内部安装 `composer` 拓展包
+
+> 需要 `ifui/webman-module` 版本 >= 1.0.3
+
+插件从 `1.0.3` 版本开始已经内置该功能，只需要在应用模块根目录下执行 `composer` 相关命令
+
+插件将自动引入应用模块下的拓展包文件
 
 ## 其他说明
 
