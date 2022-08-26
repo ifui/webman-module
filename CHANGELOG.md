@@ -1,5 +1,6 @@
 # [1.0.3](https://github.com/ifui/webman-module/releases/tag/v1.0.3) 2022-08-26
 - 更新测试文件模板
+- 减少版本依赖
 - 添加自动合并插件内部依赖库功能，可以直接在插件根目录使用 composer require 等命令
 - 添加自动引入插件的 functions.php 函数文件功能
 - 添加应用模块启动温馨提示语
