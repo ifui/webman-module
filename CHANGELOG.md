@@ -1,8 +1,10 @@
-# [1.0.X](https://github.com/ifui/webman-module/releases/tag/v1.0.3) 2022-0X-XX
+# [1.0.3](https://github.com/ifui/webman-module/releases/tag/v1.0.3) 2022-08-26
 - 更新测试文件模板
-- 修复 gitignore 输出名称不正确的问题
-- 添加自动合并插件内部依赖库功能
+- 添加自动合并插件内部依赖库功能，可以直接在插件根目录使用 composer require 等命令
 - 添加自动引入插件的 functions.php 函数文件功能
+- 修复 gitignore 输出名称不正确的问题
+- 修复暂停应用模块后仍然可以访问该模块的问题
+- 修复获取已启用应用模块异常的问题
 
 # [1.0.2](https://github.com/ifui/webman-module/releases/tag/v1.0.1) 2022-08-19
 - 修复 PHP 7.2 语法问题
