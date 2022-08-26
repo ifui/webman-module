@@ -128,7 +128,7 @@ class Module implements Bootstrap
     public function getActivity()
     {
         return array_filter($this->applications, function ($item) {
-            return $item ?? [];
+            return $item['activity'];
         });
     }
 
