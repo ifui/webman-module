@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'name' => '{{ name }}'
+    'name' => '{{ name }}',
+    'debug' => config('app.debug')
 ];

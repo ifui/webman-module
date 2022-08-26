@@ -8,9 +8,16 @@ class Install
     /**
      * @var array
      */
-    protected static $pathRelation = array (
-  'config/plugin/ifui/webman-module' => 'config/plugin/ifui/webman-module',
-);
+    protected static $pathRelation = [
+        'config/plugin/ifui/webman-module' => 'config/plugin/ifui/webman-module'
+    ];
+
+    /**
+     * @var array
+     */
+    protected static $overwriteRelationPath = [
+        'config/plugin/ifui/webman-module/app.php' => 'config/plugin/ifui/webman-module/app.php', // for v 1.0.3
+    ];
 
     /**
      * Install
@@ -19,6 +26,7 @@ class Install
     public static function install()
     {
         static::installByRelation();
+        static::overwriteByRelationPath();
     }
 
     /**
@@ -68,6 +76,16 @@ class Install
                 continue;
             }
             remove_dir($path);
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public static function overwriteByRelationPath()
+    {
+        foreach (static::$overwriteRelationPath as $source => $dest) {
+            \copy(__DIR__ . $source, base_path().$dest);
         }
     }
     

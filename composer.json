@@ -10,14 +10,12 @@
     }
   },
   "require-dev": {
-    "workerman/webman": "^1.0"
+    "workerman/webman": "^1.4.1"
   },
   "require": {
     "php": ">=7.2",
-    "webman/console": "^1.0",
     "illuminate/filesystem": "^7.30",
     "phpunit/phpunit": "^8.5",
-    "robmorgan/phinx": "^0.12.12",
-    "fzaninotto/faker": "^1.9"
+    "robmorgan/phinx": "^0.12.12"
   }
 }
