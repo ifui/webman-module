@@ -1,0 +1,3 @@
+<?php
+
+\Webman\Route::disableDefaultRoute();
