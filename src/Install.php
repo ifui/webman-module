@@ -86,6 +86,8 @@ class Install
     {
         foreach (static::$overwriteRelationPath as $source => $dest) {
             \copy(__DIR__ . "/$source", base_path() . "/$dest");
+            echo "Update $dest
+";
         }
     }
     
