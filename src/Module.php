@@ -8,6 +8,7 @@ use Illuminate\Filesystem\Filesystem;
 use Webman\Bootstrap;
 use Webman\Config;
 use Workerman\Worker;
+use Dotenv\Dotenv;
 
 class Module implements Bootstrap
 {
@@ -116,6 +117,14 @@ class Module implements Bootstrap
             // Merge plugin vendor
             if (file_exists(module_path($moduleName, 'composer.json')) && is_dir(module_path($moduleName, 'vendor'))) {
                 $mergeVendorManager->addVendor(module_path($moduleName, 'vendor'));
+            }
+            // Load env file
+            if (class_exists('Dotenv\Dotenv') && file_exists(module_path($moduleName, '.env'))) {
+                if (method_exists('Dotenv\Dotenv', 'createUnsafeImmutable')) {
+                    Dotenv::createUnsafeImmutable(module_path($moduleName))->load();
+                } else {
+                    Dotenv::createMutable(module_path($moduleName))->load();
+                }
             }
         }
     }
