@@ -101,30 +101,30 @@ class Module implements Bootstrap
 
         foreach ($activities as $activity) {
             $moduleName = $activity['name'];
-            $className = "{$namespace}\\$moduleName\app\providers\AppServerProvider";
 
-            // require plugin common functions.
+            // 加载模块公共函数文件
             if (file_exists(module_path($moduleName, 'app/functions.php'))) {
                 require module_path($moduleName, 'app/functions.php');
             }
-
-            if (class_exists($className)) {
-                if ($this->worker->name == 'plugin.ifui.webman-module.monitor') {
-                    Worker::safeEcho("<n><g>[INFO]</g> 应用模块 ${moduleName} 已启动.</n>" . PHP_EOL);
-                }
-                with(new $className($this->worker))->boot();
-            }
-            // Merge plugin vendor
+            // 加载模块 composer 拓展包文件
             if (file_exists(module_path($moduleName, 'composer.json')) && is_dir(module_path($moduleName, 'vendor'))) {
                 $mergeVendorManager->addVendor(module_path($moduleName, 'vendor'));
             }
-            // Load env file
+            // 加载 env 环境配置文件
             if (class_exists('Dotenv\Dotenv') && file_exists(module_path($moduleName, '.env'))) {
                 if (method_exists('Dotenv\Dotenv', 'createUnsafeImmutable')) {
                     Dotenv::createUnsafeImmutable(module_path($moduleName))->load();
                 } else {
                     Dotenv::createMutable(module_path($moduleName))->load();
                 }
+            }
+            // 启动模块服务容器
+            $appServerProvider = "{$namespace}\\$moduleName\app\providers\AppServerProvider";
+            if (class_exists($appServerProvider)) {
+                if (!is_null($this->worker) && $this->worker->name == 'plugin.ifui.webman-module.monitor') {
+                    Worker::safeEcho("<n><g>[INFO]</g> 应用模块 ${moduleName} 已启动.</n>" . PHP_EOL);
+                }
+                with(new $appServerProvider($this->worker))->boot();
             }
         }
     }
