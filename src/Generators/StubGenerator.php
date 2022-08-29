@@ -18,7 +18,6 @@ class StubGenerator extends Generator
      * Generator the stub file.
      *
      * @return void
-     * @throws FileNotFoundException
      */
     public function generator()
     {
@@ -54,17 +53,16 @@ class StubGenerator extends Generator
      * @param $fromPath
      * @param $toPath
      * @return void
-     * @throws FileNotFoundException
      */
     public function generatorStub($fromPath, $toPath)
     {
         $stubPath = $this->getStubPath($fromPath);
 
-        if (!$this->filesystem->isDirectory($dir = dirname($toPath))) {
-            $this->filesystem->makeDirectory($dir, 0775, true);
+        if (!is_dir($dir = dirname($toPath))) {
+            mkdir($dir, 0775, true);
         }
 
-        $this->filesystem->put($toPath, $this->getStubContent($stubPath));
+        file_put_contents($toPath, $this->getStubContent($stubPath));
         $this->command->info("Created {$toPath}");
     }
 
@@ -84,11 +82,10 @@ class StubGenerator extends Generator
      *
      * @param string $stubPath
      * @return array|string
-     * @throws FileNotFoundException
      */
     public function getStubContent(string $stubPath)
     {
-        $stub = $this->filesystem->get($stubPath);
+        $stub = file_get_contents($stubPath);
 
         return $this->replaceStub($stub);
     }

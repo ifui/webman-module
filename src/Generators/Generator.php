@@ -23,13 +23,6 @@ abstract class Generator
     protected $path;
 
     /**
-     * The filesystem instance.
-     *
-     * @var Filesystem|null
-     */
-    protected $filesystem;
-
-    /**
      * The Command instance.
      *
      * @var Command|null
@@ -40,31 +33,16 @@ abstract class Generator
      * The construct.
      *
      * @param string $name
-     * @param Filesystem|null $filesystem
      * @param Command|null $command
      */
     public function __construct(
         string     $name,
-        Filesystem $filesystem = null,
         Command    $command = null
     )
     {
         $this->name = $name;
         $this->path = Config::get('plugin.ifui.webman-module.app.paths.module') . DIRECTORY_SEPARATOR . $name;
-        $this->filesystem = $filesystem;
         $this->command = $command;
-    }
-
-    /**
-     * Set fileSystem instance.
-     *
-     * @param Filesystem $filesystem
-     * @return Generator
-     */
-    public function setFileSystem(Filesystem $filesystem)
-    {
-        $this->filesystem = $filesystem;
-        return $this;
     }
 
     /**

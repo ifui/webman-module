@@ -3,8 +3,6 @@
 namespace Ifui\WebmanModule;
 
 use Ifui\WebmanModule\Utils\MergeVendorPlugin;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Filesystem\Filesystem;
 use Webman\Bootstrap;
 use Webman\Config;
 use Workerman\Worker;
@@ -27,13 +25,6 @@ class Module implements Bootstrap
     public $applications = [];
 
     /**
-     * The Filesystem instance.
-     *
-     * @var Filesystem
-     */
-    public $filesystem;
-
-    /**
      * The Worker instance.
      *
      * @var Worker|null
@@ -45,14 +36,12 @@ class Module implements Bootstrap
      *
      * @param Worker $worker
      * @return void
-     * @throws FileNotFoundException
      */
     public static function start($worker)
     {
         require_once __DIR__ . '/helpers.php';
 
         $market = self::getInstance();
-        $market->filesystem = new Filesystem();
         $market->worker = $worker;
 
         $market->reload();
@@ -76,13 +65,12 @@ class Module implements Bootstrap
      * Reload module.json.
      *
      * @return void
-     * @throws FileNotFoundException
      */
     public function reload()
     {
         $jsonPaths = glob(module_path() . '/**/module.json');
         foreach ($jsonPaths as $path) {
-            $this->applications[] = json_decode($this->filesystem->get($path), true);
+            $this->applications[] = json_decode(file_get_contents($path), true);
         }
     }
 

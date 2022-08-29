@@ -4,8 +4,6 @@ namespace Ifui\WebmanModule\Commands;
 
 use Ifui\WebmanModule\Generators\FolderGenerator;
 use Ifui\WebmanModule\Generators\StubGenerator;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Webman\Config;
@@ -21,7 +19,6 @@ class ModuleCreateCommand extends Command
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int
-     * @throws FileNotFoundException
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -61,13 +58,11 @@ class ModuleCreateCommand extends Command
             'namespaceComposer' => $namespaceComposer
         ];
 
-        $filesystem = new Filesystem();
-
         // Generator folders
-        with(new FolderGenerator($name, $filesystem, $this))->generator();
+        with(new FolderGenerator($name, $this))->generator();
 
         // Generator stubs
-        with(new StubGenerator($name, $filesystem, $this))
+        with(new StubGenerator($name, $this))
             ->setReplaces($replaces)
             ->generator();
 

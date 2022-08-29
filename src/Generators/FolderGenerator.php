@@ -17,7 +17,7 @@ class FolderGenerator extends Generator
 
         foreach ($generators as $key => $value) {
             $path = $this->path . DIRECTORY_SEPARATOR . $value;
-            if ($this->filesystem->makeDirectory($path, 0755, true)) {
+            if (mkdir($path, 0755, true)) {
                 $this->command->info("Created key: {$key} of generator config");
             } else {
                 $this->command->error("Failed created key: {$key} of generator config");
