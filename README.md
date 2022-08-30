@@ -13,14 +13,14 @@
 ## 安装
 
 ```shell
-composer require ifui/webman-module ^1.0.3
+composer require ifui/webman-module ^1.0.4
 ```
 
-## 版本升级 V1.0.3
+## 版本升级 V1.0.4
 
 ```shell
 # 安装
-composer require ifui/webman-module ^1.0.3
+composer require ifui/webman-module ^1.0.4
 # 升级配置文件
 php webman plugin:install ifui/webman-module
 ```
