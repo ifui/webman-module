@@ -1,3 +1,6 @@
+# [1.0.5](https://github.com/ifui/webman-module/releases/tag/v1.0.5) 2022-08-31
+- 修复 illuminate/filesystem 报错的问题
+
 # [1.0.4](https://github.com/ifui/webman-module/releases/tag/v1.0.4) 2022-08-30
 - 添加应用模块 env 环境变量支持
 - 修复 illuminate/filesystem 与 webman 主框架版本冲突的问题
