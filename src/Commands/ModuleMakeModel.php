@@ -4,8 +4,6 @@ namespace Ifui\WebmanModule\Commands;
 
 use Ifui\WebmanModule\Concerns\Command\InteractsWithModule;
 use Ifui\WebmanModule\Generators\StubGenerator;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Filesystem\Filesystem;
 use support\Db;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -71,11 +69,9 @@ class ModuleMakeModel extends Command
             'pk' => $pk
         ];
 
-        $filesystem = new Filesystem();
-
         // Generator stubs
         $stubPath = (!Config::get('database') && Config::get('thinkorm')) ? 'model/tpModel.stub' : 'model/model.stub';
-        with(new StubGenerator($moduleName, $filesystem, $this))
+        with(new StubGenerator($moduleName, $this))
             ->setReplaces($replaces)
             ->generatorStub($stubPath, $filepath);
 

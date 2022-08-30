@@ -5,8 +5,6 @@ namespace Ifui\WebmanModule\Commands;
 
 use Ifui\WebmanModule\Concerns\Command\InteractsWithModule;
 use Ifui\WebmanModule\Generators\StubGenerator;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -40,7 +38,6 @@ class ModuleMakeController extends Command
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int
-     * @throws FileNotFoundException
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -63,10 +60,8 @@ class ModuleMakeController extends Command
             'className' => $className
         ];
 
-        $filesystem = new Filesystem();
-
         // Generator stubs
-        with(new StubGenerator($moduleName, $filesystem, $this))
+        with(new StubGenerator($moduleName, $this))
             ->setReplaces($replaces)
             ->generatorStub('controller/base.stub', $filepath);
 
