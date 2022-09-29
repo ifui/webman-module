@@ -38,6 +38,10 @@ class ModuleCreateCommand extends Command
         $studlyName = implode($studlyName);
 
         $author = $this->ask('请输入作者名（必填）');
+        if (empty($author)) {
+            $this->error('请输入作者名');
+            return self::FAILURE;
+        }
         $email = $this->ask('请输入邮箱地址（选填）');
         $description = $this->ask('请输入应用简介（选填）');
         $homepage = $this->ask('请输入主页地址（选填）');
@@ -51,9 +55,9 @@ class ModuleCreateCommand extends Command
             'studlyName' => $studlyName,
             'lowerName' => strtolower($name),
             'author' => $author,
-            'email' => $email,
+            'email' => $email ?: "{$author}@{$author}.com",
             'description' => $description,
-            'homepage' => $homepage,
+            'homepage' => $homepage ?: "https://{$author}.com",
             'namespace' => $namespace,
             'namespaceComposer' => $namespaceComposer
         ];
